@@ -13,3 +13,5 @@ class Book(Base):
     __tablename__ = "book"
     book_id = Column(Integer, primary_key=True)
     book_name = Column(String)
+    book_author = Column(String)
+    book_publisher = Column(String)
