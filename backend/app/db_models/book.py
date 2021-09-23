@@ -15,3 +15,6 @@ class Book(Base):
     book_name = Column(String)
     book_author = Column(String)
     book_publisher = Column(String)
+
+    class Config:
+        orm_mode = True

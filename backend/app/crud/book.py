@@ -1,4 +1,4 @@
-from db.book import Book
+from db_models.book import Book
 from typing import Optional, List
 from sqlalchemy.orm import Session
 
