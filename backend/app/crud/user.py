@@ -15,7 +15,7 @@ def delete():
     pass
 
 
-def get_by_id(
+def ge_user_by_id(
     db_session: Session, *, id: int
 ) -> Optional[User]:
     return (
@@ -25,7 +25,7 @@ def get_by_id(
     )
 
 
-def get_by_username(
+def get_user_by_username(
     db_session: Session, *, username: str
 ) -> Optional[List[User]]:
     return (
@@ -35,7 +35,7 @@ def get_by_username(
     )
 
 
-def get_by_email(
+def get_user_by_email(
     db_session: Session, *, mail: str
 ) -> Optional[List[User]]:
     return (

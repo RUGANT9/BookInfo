@@ -20,7 +20,7 @@ def get_by_id(
 ) -> Optional[Book]:
     return (
         db_session.query(Book)
-        .filter(Book.book_id == id)
+        .filter(Book.id == id)
         .first()
     )
 
@@ -30,7 +30,7 @@ def get_by_book_name(
 ) -> Optional[List[Book]]:
     return (
         db_session.query(Book)
-        .filter(Book.book_name == name)
+        .filter(Book.name == name)
         .all()
     )
 
@@ -40,7 +40,7 @@ def get_by_author_name(
 ) -> Optional[List[Book]]:
     return (
         db_session.query(Book)
-        .filter(Book.book_author == name)
+        .filter(Book.author == name)
         .all()
     )
 
@@ -50,6 +50,6 @@ def get_by_publisher_name(
 ) -> Optional[List[Book]]:
     return (
         db_session.query(Book)
-        .filter(Book.book_publisher == name)
+        .filter(Book.publisher == name)
         .all()
     )
