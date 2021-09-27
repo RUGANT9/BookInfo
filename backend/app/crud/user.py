@@ -15,6 +15,7 @@ def create(
         db_session.commit()
     except Exception as e:
         db_session.rollback()
+        raise e
     db_session.refresh(user)
     return user
 
@@ -30,11 +31,25 @@ def update(
     for field in update_data:
         if field in user_data:
             setattr(user, field, update_data[field])
+    if 'password' in update_data:
+        user.password_hash = get_password_hash(update_data['password'])
+
+    db_session.add(user)
+    try:
+        db_session.commit()
+    except Exception as e:
+        raise e
+    db_session.refresh(user)
+    return user
 
 
-
-def delete():
-    pass
+def delete(
+    db_session: Session, *, id: int
+) -> user:
+    user = db_session.query(User).filter(User.id==id).first()
+    db_session.delete(user)
+    db_session.commit()
+    return user
 
 
 def ge_user_by_id(
